@@ -18,17 +18,17 @@
           <h1 class="capitalize text-lg xs:text-xl md:text-2xl text-white">
             inventory app
           </h1>
-          <span class="">
+          <span>
             <span
+              id="all_products_quantity"
               class="w-7 h-7 item-center rounded-full border-2 border-orange-400 text-orange-400 text-sm"
             >
-              0
             </span>
           </span>
         </div>
       </div>
       <!-- =================== app =================== -->
-      <div class="p-4 mt-16 min-h-[calc(100vh_-_64px)]">
+      <div class="px-4 pt-4 pb-16 mt-16 min-h-[calc(100vh_-_64px)]">
         <!-- forms -->
         <div class="mb-6 sm:grid grid-cols-12 gap-x-4">
           <!-- ------------- category form ------------- -->
@@ -128,55 +128,9 @@
         <div class="">
           <h2 class="title-style">product list</h2>
           <div
-            class="flex flex-col gap-y-3 text-slate-400 w-full capitalize text-xs sm:text-sm"
-          >
-            <div class="flex items-center justify-between">
-              <span class="text-slate-300 text-base sm:text-lg md:text-xl"
-                >react.js</span
-              >
-              <div class="flex items-center gap-x-3">
-                <span>date</span>
-                <span
-                  class="border border-gray-600 rounded-full px-2 py-0.5 inline-block"
-                  >frontend</span
-                >
-                <span
-                  class="w-6 h-6 item-center rounded-full border border-slate-500 bg-slate-700"
-                >
-                  0
-                </span>
-                <button
-                  type="button"
-                  class="border border-orange-500 text-orange-500 rounded-full px-2 py-0.5 inline-block capitalize"
-                >
-                  delete
-                </button>
-              </div>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-300 text-base sm:text-lg md:text-xl"
-                >react.js</span
-              >
-              <div class="flex items-center gap-x-3">
-                <span>date</span>
-                <span
-                  class="border border-gray-600 rounded-full px-2 py-0.5 inline-block"
-                  >frontend</span
-                >
-                <span
-                  class="w-6 h-6 item-center rounded-full border border-slate-500 bg-slate-700"
-                >
-                  0
-                </span>
-                <button
-                  type="button"
-                  class="border border-orange-500 text-orange-500 rounded-full px-2 py-0.5 inline-block capitalize"
-                >
-                  delete
-                </button>
-              </div>
-            </div>
-          </div>
+            id="product_list"
+            class="flex flex-col gap-y-3 text-slate-400 w-full capitalize"
+          ></div>
         </div>
       </div>
     </div>
