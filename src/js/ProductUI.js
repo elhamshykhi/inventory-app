@@ -5,9 +5,12 @@ const productQuantity = document.querySelector("#product_quantity");
 const productCategory = document.querySelector("#product_category");
 const addNewProductBtn = document.querySelector("#add_new_product_btn");
 
+const searchInput = document.querySelector("#productList_search_input");
+
 class ProductUI {
   constructor() {
     addNewProductBtn.addEventListener("click", (e) => this.addNewProduct(e));
+    searchInput.addEventListener("input", (e) => this.searchProducts(e));
     this.products = [];
   }
 
@@ -33,9 +36,9 @@ class ProductUI {
     this.updateProductsList();
   }
 
-  createProductList() {
+  createProductList(products) {
     const productList = document.querySelector("#product_list");
-    productList.innerHTML = this.products
+    productList.innerHTML = products
       .map((element) => {
         const selectedCategory = Storage.getAllCategories().find(
           (item) => item.id === Number(element.category)
@@ -79,10 +82,20 @@ class ProductUI {
   // update products list
   updateProductsList() {
     this.products = Storage.getAllProducts();
-    this.createProductList();
+    this.createProductList(this.products);
 
     document.querySelector("#all_products_quantity").innerHTML =
       Storage.getAllProducts().length;
+  }
+
+  searchProducts(e) {
+    const value = e.target.value.trim().toLowerCase();
+
+    const filteredProducts = this.products.filter((item) =>
+      item.title.toLowerCase().includes(value)
+    );
+
+    this.createProductList(filteredProducts);
   }
 }
 
