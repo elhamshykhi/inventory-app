@@ -7,13 +7,13 @@
     <title>Inventory App</title>
   </head>
   <body class="bg-gradient-to-b from-slate-950 to-slate-800">
-    <div class="max-w-screen-md mx-auto relative">
+    <div class="container sm:max-w-screen-sm mx-auto relative">
       <!-- =================== header =================== -->
       <div
         class="bg-sky-400 backdrop-blur-sm bg-opacity-60 fixed top-0 inset-x-0 shadow-md rounded-bl-xl rounded-br-xl"
       >
         <div
-          class="w-full flex justify-between p-4 max-w-screen-sm md:max-w-screen-md mx-auto font-bold"
+          class="w-full flex justify-between p-4 container sm:max-w-screen-sm mx-auto font-bold"
         >
           <h1 class="capitalize text-lg xs:text-xl md:text-2xl text-white">
             inventory app
@@ -29,50 +29,10 @@
       </div>
       <!-- =================== app =================== -->
       <div class="px-4 pt-4 pb-16 mt-16 min-h-[calc(100vh_-_64px)]">
-        <!-- forms -->
-        <div class="mb-6 sm:grid grid-cols-12 gap-x-4">
-          <!-- ------------- category form ------------- -->
-          <div class="mb-4 sm:mb-0 col-span-6">
-            <h2 class="title-style">add new category</h2>
-            <form action="" class="form-style sm:h-[calc(100%_-_40px)]">
-              <div class="">
-                <label for="category_title" class="label-style"
-                  >category title</label
-                >
-                <input
-                  type="text"
-                  name="category-title"
-                  id="category_title"
-                  class="input-style"
-                />
-              </div>
-
-              <div class="flex flex-col h-full">
-                <label for="category_desc" class="label-style">
-                  category description
-                </label>
-                <textarea
-                  name="category-desc"
-                  id="category_desc"
-                  class="input-style flex-grow resize-none"
-                ></textarea>
-              </div>
-              <div class="flex items-center justify-between gap-x-2">
-                <button type="button" class="btn-style bg-transparent">
-                  cancel
-                </button>
-                <button
-                  type="button"
-                  id="add_new_category_btn"
-                  class="btn-style bg-cyan-600"
-                >
-                  add new category
-                </button>
-              </div>
-            </form>
-          </div>
-          <!-- ------------- product form ------------- -->
-          <div class="col-span-6">
+        <!-- ------------- forms ------------- -->
+        <div class="mb-6 sm:flex gap-x-4">
+          <!-- product form -->
+          <div class="mb-4 sm:mb-0 flex-1">
             <h2 class="title-style">add new product</h2>
             <form action="" class="form-style">
               <div class="">
@@ -98,21 +58,25 @@
                 />
               </div>
               <div class="">
-                <label for="product-category" class="label-style">
-                  product category
-                </label>
+                <div class="flex items-center justify-between">
+                  <label for="product-category" class="label-style">
+                    product category
+                  </label>
+                  <button
+                    type="button"
+                    id="toggle_category_btn"
+                    class="capitalize font-medium block mb-2 text-cyan-400 md:text-sm"
+                  >
+                    add new category ?
+                  </button>
+                </div>
                 <select
                   name="product-category"
                   id="product_category"
                   class="input-style"
-                >
-                  <!-- <option value="1" class="bg-sky-800">select a category</option> -->
-                </select>
+                ></select>
               </div>
               <div class="flex items-center justify-between gap-x-2">
-                <button type="button" class="btn-style bg-transparent">
-                  cancel
-                </button>
                 <button
                   type="button"
                   id="add_new_product_btn"
@@ -123,11 +87,56 @@
               </div>
             </form>
           </div>
+          <!-- category form -->
+          <div id="category_form" class="hidden flex-1">
+            <h2 class="title-style">add new category</h2>
+            <form action="" class="form-style sm:h-[calc(100%_-_40px)]">
+              <div class="">
+                <label for="category_title" class="label-style"
+                  >category title</label
+                >
+                <input
+                  type="text"
+                  name="category-title"
+                  id="category_title"
+                  class="input-style"
+                />
+              </div>
+
+              <div class="flex flex-col h-full">
+                <label for="category_desc" class="label-style">
+                  category description
+                </label>
+                <textarea
+                  name="category-desc"
+                  id="category_desc"
+                  class="input-style flex-grow resize-none"
+                ></textarea>
+              </div>
+              <div class="flex items-center justify-between gap-x-2">
+                <button
+                  id="cancel_category_btn"
+                  type="button"
+                  class="btn-style bg-transparent md:text-xs"
+                >
+                  cancel
+                </button>
+                <button
+                  type="button"
+                  id="add_new_category_btn"
+                  class="btn-style bg-cyan-600 md:text-xs"
+                >
+                  add new category
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <!-- product-list -->
+
+        <!-- ------------- product-list ------------- -->
         <div class="">
           <h2 class="title-style">product list</h2>
-
+          <!-- ------------- search & sort ------------- -->
           <div
             class="flex items-center justify-between gap-x-4 mb-6 text-slate-300 text-xs xs:text-sm"
           >
@@ -143,7 +152,7 @@
                 class="input-style text-xs xs:text-sm"
               />
             </div>
-            
+
             <!-- sort -->
             <div class="flex-1">
               <label for="productList_sort" class="label-style">sort :</label>
@@ -158,6 +167,7 @@
             </div>
           </div>
 
+          <!-- ------------- products list ------------- -->
           <div
             id="product_list"
             class="flex flex-col gap-y-3 text-slate-400 w-full capitalize"

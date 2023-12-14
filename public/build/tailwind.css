@@ -687,6 +687,45 @@ select {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 400px) {
+
+  .container {
+    max-width: 400px;
+  }
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 .static {
   position: static;
 }
@@ -703,12 +742,12 @@ select {
 .top-0 {
   top: 0px;
 }
-.col-span-6 {
-  grid-column: span 6 / span 6;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 .mb-4 {
   margin-bottom: 1rem;
@@ -718,6 +757,9 @@ select {
 }
 .mt-16 {
   margin-top: 4rem;
+}
+.block {
+  display: block;
 }
 .inline-block {
   display: inline-block;
@@ -755,12 +797,6 @@ select {
 .w-full {
   width: 100%;
 }
-.max-w-screen-md {
-  max-width: 768px;
-}
-.max-w-screen-sm {
-  max-width: 640px;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -769,9 +805,6 @@ select {
 }
 .resize-none {
   resize: none;
-}
-.grid-cols-12 {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .flex-col {
   flex-direction: column;
@@ -908,8 +941,15 @@ select {
 .font-bold {
   font-weight: 700;
 }
+.font-medium {
+  font-weight: 500;
+}
 .capitalize {
   text-transform: capitalize;
+}
+.text-cyan-400 {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity));
 }
 .text-orange-400 {
   --tw-text-opacity: 1;
@@ -1080,8 +1120,8 @@ select {
     display: inline-block;
   }
 
-  .sm\:grid {
-    display: grid;
+  .sm\:flex {
+    display: flex;
   }
 
   .sm\:hidden {
@@ -1098,6 +1138,10 @@ select {
 
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:max-w-screen-sm {
+    max-width: 640px;
   }
 
   .sm\:px-1 {
@@ -1124,20 +1168,31 @@ select {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 }
 @media (min-width: 768px) {
-
-  .md\:max-w-screen-md {
-    max-width: 768px;
-  }
 
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
   }
 
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
