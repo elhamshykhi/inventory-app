@@ -42,7 +42,9 @@ class CategoryUI {
 
   // update products categories options
   updateCategoriesOptionList() {
-    this.categories = Storage.getAllCategories();
+    this.categories = Storage.getAllCategories().sort((a, b) => {
+      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+    });
     this.createCategoriesOptionList();
   }
 

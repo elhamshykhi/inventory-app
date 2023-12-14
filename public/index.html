@@ -131,6 +131,7 @@
           <div
             class="flex items-center justify-between gap-x-4 mb-6 text-slate-300 text-xs xs:text-sm"
           >
+            <!-- search input -->
             <div class="flex-1">
               <label for="productList_search_input" class="label-style"
                 >search :</label
@@ -141,6 +142,19 @@
                 id="productList_search_input"
                 class="input-style text-xs xs:text-sm"
               />
+            </div>
+            
+            <!-- sort -->
+            <div class="flex-1">
+              <label for="productList_sort" class="label-style">sort :</label>
+              <select
+                name="productList-sort"
+                id="productList_sort"
+                class="input-style text-xs xs:text-sm"
+              >
+                <option value="earliest" selected class="">earliest</option>
+                <option value="latest" class="">latest</option>
+              </select>
             </div>
           </div>
 

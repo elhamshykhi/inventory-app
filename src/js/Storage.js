@@ -1,10 +1,7 @@
 export default class Storage {
   // categories =========================
   static getAllCategories() {
-    const categories = JSON.parse(localStorage.getItem("categories")) || [];
-    return categories.sort((a, b) => {
-      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-    });
+    return JSON.parse(localStorage.getItem("categories")) || [];
   }
 
   static saveCategory(category) {
@@ -26,10 +23,7 @@ export default class Storage {
 
   // products =========================
   static getAllProducts() {
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    return products.sort((a, b) => {
-      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-    });
+    return JSON.parse(localStorage.getItem("products")) || [];
   }
 
   static saveProduct(product) {

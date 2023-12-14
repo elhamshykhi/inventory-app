@@ -6,12 +6,15 @@ const productCategory = document.querySelector("#product_category");
 const addNewProductBtn = document.querySelector("#add_new_product_btn");
 
 const searchInput = document.querySelector("#productList_search_input");
+const selectSort = document.querySelector("#productList_sort");
 
 class ProductUI {
   constructor() {
     addNewProductBtn.addEventListener("click", (e) => this.addNewProduct(e));
     searchInput.addEventListener("input", (e) => this.searchProducts(e));
+    selectSort.addEventListener("change", (e) => this.sortProducts(e));
     this.products = [];
+    this.sort = "earliest";
   }
 
   setupApp() {
@@ -36,8 +39,17 @@ class ProductUI {
     this.updateProductsList();
   }
 
-  createProductList(products) {
+  createProductList(products, sort = "earliest") {
     const productList = document.querySelector("#product_list");
+
+    products = products.sort((a, b) => {
+      if (sort === "earliest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      } else if (sort === "latest") {
+        return new Date(a.createdAt) < new Date(b.createdAt) ? -1 : 1;
+      }
+    });
+
     productList.innerHTML = products
       .map((element) => {
         const selectedCategory = Storage.getAllCategories().find(
@@ -82,7 +94,7 @@ class ProductUI {
   // update products list
   updateProductsList() {
     this.products = Storage.getAllProducts();
-    this.createProductList(this.products);
+    this.createProductList(this.products, this.sort);
 
     document.querySelector("#all_products_quantity").innerHTML =
       Storage.getAllProducts().length;
@@ -95,7 +107,13 @@ class ProductUI {
       item.title.toLowerCase().includes(value)
     );
 
-    this.createProductList(filteredProducts);
+    this.createProductList(filteredProducts, this.sort);
+  }
+
+  sortProducts(e) {
+    this.sort = e.target.value;
+    this.products = Storage.getAllProducts();
+    this.createProductList(this.products, this.sort);
   }
 }
 
