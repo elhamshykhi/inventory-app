@@ -78,7 +78,7 @@ class ProductUI {
           <button
             type="button"
             data-id="${element.id}"
-            class="w-6 h-6 sm:w-auto sm:h-auto sm:px-1.5 sm:py-0.5 item-center border border-orange-500 text-orange-500 rounded-full inline-block capitalize"
+            class="delete_product w-6 h-6 sm:w-auto sm:h-auto sm:px-1.5 sm:py-0.5 item-center border border-orange-500 text-orange-500 rounded-full inline-block capitalize"
           >
             <span class="hidden sm:inline-block">delete</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:hidden">
@@ -89,6 +89,15 @@ class ProductUI {
       </div>`;
       })
       .join("");
+
+    const deleteProductBtns = [...document.querySelectorAll(".delete_product")];
+    deleteProductBtns.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const productID = Number(btn.dataset.id);
+        Storage.deleteProduct(productID);
+        this.updateProductsList();
+      })
+    );
   }
 
   // update products list
